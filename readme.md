@@ -22,6 +22,14 @@
 
 参考RM2023-华南理工大学-华南虎-工程视觉开源.pdf
 
+才发现这个兑换框的正面四个角是看不到的。。。。。
+
+[角点检测](https://blog.csdn.net/SESESssss/article/details/106774854)
+
+[CV笔记8：角点特征之Harris角点检测算法（基于python-opencv实现）](https://blog.csdn.net/my_kun/article/details/106918857)
+
+[OpenCV(10): 轮廓近似—多边形拟合，边界矩形与边界圆形](https://blog.csdn.net/m0_50317149/article/details/130069059)
+
 ### 知识点
 
 #### 噪声

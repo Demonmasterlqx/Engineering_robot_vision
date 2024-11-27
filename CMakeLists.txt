@@ -13,8 +13,12 @@ find_package(OpenCV REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
 find_package(Ceres REQUIRED)
 
+file(GLOB all ${home}/*.cpp)
+
+message(${all})
+
 # 添加可执行文件
-add_executable(main main.cpp ${DETECTOR_FILES})
+add_executable(main ${all})
 
 # 链接所需的库
 target_link_libraries(main
