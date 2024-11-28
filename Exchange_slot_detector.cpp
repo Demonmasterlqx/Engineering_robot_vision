@@ -94,8 +94,9 @@ bool find_front_exchange_slot(const Mat& image_pre,Mat& image){
 
     for(int i=0;i<4;i++){
         vector<cv::Point2f> add;
-        for(int e=i;e<i+3;e++){
-            for(const auto& point : counter_2[e%4]) add.push_back(point);
+        for(int e=i-1;e<i+2;e++){
+            //vector中的⻆点顺序永远为逆时针顺序
+            for(const auto& point : counter_2[(e+4)%4]) add.push_back(point);
         }
         cv::minEnclosingCircle(add,circles[i].center,circles[i].radius);
         cv::minEnclosingTriangle(add,trangles[i]);
@@ -114,7 +115,7 @@ bool find_front_exchange_slot(const Mat& image_pre,Mat& image){
     // cv::waitKey(0);
     
     for(const auto& trangle:trangles){
-        Mat Image=image.clone();
+        // Mat Image=image.clone();
         // cv::drawContours(Image,Counters{trangle},-1,blue,5);
         // cv::imshow("1",Image);
         // cv::waitKey(0);
@@ -141,28 +142,42 @@ bool find_front_exchange_slot(const Mat& image_pre,Mat& image){
         rectangle.push_back(trangle[index]);
     }
 
-    cv::drawContours(image,Counters{rectangle},-1,blue,5);
-    cv::imshow("1",image);
-    cv::waitKey(0);
+    // cv::drawContours(image,Counters{rectangle},-1,blue,5);
+    // cv::imshow("1",image);
+    // cv::waitKey(0);
 
     //找完了四个角，开始排序
 
-    Counters small_rects;
-    int index_0;
+    // Counters small_rects;
+    // int index_0;
 
-    for(int i=counter_3.size()-1;i>=0;i--){
-        double siz_counter=cv::contourArea(counter_3[i]),siz_rect=counter_3rects[i].size.area();
-        bool siz_factor=siz_counter>=50&&siz_counter<=200;
-        bool siz_counter_to_siz_rect=siz_rect<=siz_counter*1.2;
-        bool width_to_height=counter_3rects[i].size.height/counter_3rects[i].size.width<=2&&counter_3rects[i].size.width/counter_3rects[i].size.height<=2;
-        if(siz_factor&&siz_counter_to_siz_rect&&width_to_height){
-            small_rects.push_back(counter_3[i]);
-        }
-    }
+    // for(int i=counter_3.size()-1;i>=0;i--){
+    //     double siz_counter=cv::contourArea(counter_3[i]),siz_rect=counter_3rects[i].size.area();
+    //     bool siz_factor=siz_counter>=50&&siz_counter<=200;
+    //     bool siz_counter_to_siz_rect=siz_rect<=siz_counter*1.2;
+    //     bool width_to_height=counter_3rects[i].size.height/counter_3rects[i].size.width<=2&&counter_3rects[i].size.width/counter_3rects[i].size.height<=2;
+    //     if(siz_factor&&siz_counter_to_siz_rect&&width_to_height){
+    //         small_rects.push_back(counter_3[i]);
+    //     }
+    // }
 
-    if(small_rects.empty()){
-        // for(auto & i : )
-    }
+    // if(small_rects.empty()){
+    //     for(auto & i : )
+    // }
+
+    //这里使用的是识别一个特殊的角来确定方向
+
+    std::sort(rectangle.begin(),rectangle.end(),[&center](const cv::Point &x1,const cv::Point &x2){
+        float angle1=angleBetweenVectors(cv::Point2f(1,0),cv::Point2f(x1)-center);
+        float angle2=angleBetweenVectors(cv::Point2f(1,0),cv::Point2f(x2)-center);
+        if(x1.y>=center.y) angle1=360-angle1;
+        if(x2.y>=center.y) angle2=360-angle2;
+        return angle1<angle2;
+    });
+    // 这个是按照顺时针存的，第一个角是当前图片中最左上角
+    cv::drawContours(image,Counters{rectangle},-1,blue,5);
+    cv::imshow("1",image);
+    cv::waitKey(0);
 
     return 1;
 }
