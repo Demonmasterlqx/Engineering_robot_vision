@@ -3,8 +3,10 @@ cmake_minimum_required(VERSION 3.0)
 
 # 设置C++标准为C++17
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_BUILD_TYPE Debug)
 
 set(home /home/lqx/code/Engineering_robot_vision)
 

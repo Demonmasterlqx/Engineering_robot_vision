@@ -19,8 +19,9 @@
 
 int main(){
     std::fstream in;
-    in.open("../in");
-    char *dir;
+    in.open("in");
+    if(in.is_open()==0) {cout<<"))))";return 0;}
+    std::string dir;
     in>>dir;
     auto image=cv::imread(dir);
     process_image_front(image);

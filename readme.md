@@ -30,6 +30,8 @@
 
 [OpenCV(10): 轮廓近似—多边形拟合，边界矩形与边界圆形](https://blog.csdn.net/m0_50317149/article/details/130069059)
 
+[【从零学习OpenCV 4】点集拟合](https://zhuanlan.zhihu.com/p/101274163)
+
 ### 知识点
 
 #### 噪声
