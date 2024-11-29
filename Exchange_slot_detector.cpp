@@ -32,7 +32,7 @@ cv::Mat preprocess_image_exchange(const cv::Mat& image){
     // cv::imshow("2",image_BR);
     // cv::imshow("3",image_binary);
     // cv::waitKey(0);
-    return image_binary;
+    return  image_binary;
 }
 
 Triangle_arrow find_triangle_arrow(const Mat& image_pre,const Mat& image){

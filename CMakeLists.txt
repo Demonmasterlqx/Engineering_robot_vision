@@ -10,6 +10,9 @@ set(CMAKE_BUILD_TYPE Debug)
 
 set(home /home/lqx/code/Engineering_robot_vision)
 
+include_directories(${home}/cameraOpen/include)
+
+
 # 查找OpenCV库和yaml-cpp库
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 3.3 REQUIRED)
@@ -25,4 +28,5 @@ add_executable(main ${all})
 # 链接所需的库
 target_link_libraries(main
     ${OpenCV_LIBS}
+    ${home}/cameraOpen/64/libMvCameraControl.so
 )
