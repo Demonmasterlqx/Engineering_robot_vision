@@ -16,8 +16,10 @@
 #include <bits/stdc++.h>
 
 #include "detector.hpp"
+#include "GetCameraImage.hpp"
 
 int main(){
+    VideoGet();
     std::fstream in;
     in.open("in");
     if(in.is_open()==0) {cout<<"))))";return 0;}
