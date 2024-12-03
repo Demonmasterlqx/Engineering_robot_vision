@@ -32,9 +32,27 @@
 
 [【从零学习OpenCV 4】点集拟合](https://zhuanlan.zhihu.com/p/101274163)
 
-### 知识点
+### 测距与深度估计
 
-#### 噪声
+#### 比例法
 
-1. 椒盐噪声
-2. 
+这个的确值得一试，因为只要角点调教得好，我就无敌！！！！
+
+#### pnp解算
+
+这个玩意的东西有点多，但是目前只需要知道咋用就行，具体原理可以稍后知晓（先让代码跑起来吧！！！！！）
+
+[opencv document of pnp](https://docs.opencv.org/3.4/d5/d1f/calib3d_solvePnP.html)
+
+
+### 弹道解算
+
+~~工程摸鱼~~
+
+[ceres](http://ceres-solver.org/)
+
+### 杂鱼
+
+这个RM也是要读论文的吗？？？
+
+[杂鱼？？](https://github.com/amusi/CVPR2024-Papers-with-Code)
