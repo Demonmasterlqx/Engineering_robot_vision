@@ -47,6 +47,12 @@ struct Circle{
     Circle(const cv::Point2f & po,float ra):center(po),radius(ra){}
 };
 
+struct Slot{
+    //corners is in the clockwise order, begin with the left_up one
+    std::array<cv::Point2f,4> corners;
+    cv::Point2f center;
+};
+
 //定义颜色
 const cv::Scalar blue=cv::Scalar(255,0,0);
 const cv::Scalar green=cv::Scalar(0,255,0);
