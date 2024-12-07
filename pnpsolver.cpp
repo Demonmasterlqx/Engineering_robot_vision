@@ -40,7 +40,5 @@ bool PnPsolver::solvePnP(const Slot & slot, cv::Mat & rvec, cv::Mat & tvec){
 
     for(auto &i : slot.corners) image_slot_points.push_back(i);
     image_slot_points.push_back(slot.center);
-
     return cv::solvePnP(image_slot_points,slot_3d_points,camera_matrix,distortion_coefficients,rvec,tvec,false,cv::SOLVEPNP_IPPE);
 }
-
