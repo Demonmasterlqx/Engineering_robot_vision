@@ -35,20 +35,6 @@ cv::Mat preprocess_image_exchange(const cv::Mat& image){
     return  image_binary;
 }
 
-Triangle_arrow find_triangle_arrow(const Mat& image_pre,const Mat& image){
-    Counters counter_triangle_1,counter_triangle_2;
-    cv::findContours(image_pre,counter_triangle_1,cv::RETR_LIST,cv::CHAIN_APPROX_SIMPLE);
-    // cv::drawContours(image,counter_triangle,-1,blue,4);
-    // cv::imshow("4",image);
-    // cv::waitKey(0);
-    // cv::cornerHarris
-    for(auto counter : counter_triangle_1){
-        cv::RotatedRect rect=cv::minAreaRect(counter);
-    }
-
-    return Triangle_arrow();
-}
-
 bool find_front_exchange_slot(const Mat& image_pre,Mat& image){
     Counters counter_1,counter_2,counter_3;
     vector<cv::RotatedRect> counter_3rects;
@@ -178,13 +164,8 @@ bool find_front_exchange_slot(const Mat& image_pre,Mat& image){
     cv::drawContours(image,Counters{rectangle},-1,blue,5);
     cv::imshow("1",image);
     cv::waitKey(0);
-
+    
     return 1;
-}
-
-void process_image_exchange_slot(cv::Mat &image){
-    cv::Mat image_binary=preprocess_image_exchange(image);
-    find_triangle_arrow(image_binary,image);
 }
 
 void process_image_front(cv::Mat& image){

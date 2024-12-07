@@ -31,20 +31,23 @@ typedef vector<Circle> Circles;
 
 const float eps=1e-9;
 
-//奇怪的问题，为啥把这个定义放在后面会报重载出问题，而不是这个类没有定义？
-class Triangle_arrow:Mat{
-};
-class Front_exchange_slot:Mat{
-    public:
+// class Front_exchange_slot:Mat{
+//     public:
 
-    private:
+//     private:
 
-};
+// };
 struct Circle{
     cv::Point2f center;
     float radius;
     Circle(){}
     Circle(const cv::Point2f & po,float ra):center(po),radius(ra){}
+};
+
+struct Slot{
+    //corners is in the clockwise order, begin with the left_up one
+    std::array<cv::Point2f,4> corners;
+    cv::Point2f center;
 };
 
 //定义颜色
@@ -53,7 +56,7 @@ const cv::Scalar green=cv::Scalar(0,255,0);
 
 
 cv::Mat preprocess_image_exchange(const cv::Mat& image);
-Triangle_arrow find_triangle_arrow(const Mat& image_pre,const Mat& image);
+// Triangle_arrow find_triangle_arrow(const Mat& image_pre,const Mat& image);
 bool find_front_exchange_slot(const Mat& image_pre,const Mat& image);
 // void process_image_front();
 // void process_image_exchange_slot();
